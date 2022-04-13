@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AmazonS3 测试</string>
+
+
+    <!--提示确认-->
+    <string name="common_confirm">确认</string>
+    <string name="common_cancel">取消</string>
+
+    <!--照片选择-->
+    <string name="mate_photograph">拍照</string>
+    <string name="mate_import_from_local">从本地导入</string>
+    <string name="mate_cancel">取消</string>
+
+    <!--视频通话-->
+    <string name="av_waiting">正在等待对方接受邀请.</string>
+    <string name="av_audio_invite">邀请你进行语音通话</string>
+    <string name="av_video_invite">邀请你进行视频通话</string>
+    <string name="empty">暂无数据</string>
+    <string name="uchat_net_load">加载中...</string>
+    <string name="uchat_no_more_data">没有更多数据了.</string>
+    <string name="uchat_no_network">网络不给力啊，点击再试一次吧.</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="PopupRadioButton">
+        <attr name="showPopup" format="boolean" />
+        <attr name="popupSrc" format="reference" />
+        <attr name="aspectRatio" format="fraction" />
+    </declare-styleable>
+</resources>

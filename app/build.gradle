@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.google.gms.google-services'
+android {
+    buildToolsVersion = '29.0.3'
+    compileSdkVersion 29
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    defaultConfig {
+        applicationId "com.amaz.s3"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 101
+        versionName "1.0.1"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86"
+        }
+        // 若集成过多第三方库时可能导致方法超过65536时需要开启
+        multiDexEnabled true
+        flavorDimensions "default"
+    }
+    signingConfigs {
+        debug {
+            keyAlias 'mateu123'
+            keyPassword 'mateu123'
+            storeFile file('../mateu123.jks')
+            storePassword 'mateu123'
+        }
+        release {
+            keyAlias 'mateu123'
+            keyPassword 'mateu123'
+            storeFile file('../mateu123.jks')
+            storePassword 'mateu123'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            zipAlignEnabled true // 开启ZipAlign优化
+            shrinkResources false // 移除无用的resource文件
+        }
+    }
+
+
+    //在apk文件后边生成版本号信息
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "Amaz_v_${defaultConfig.versionName}_${releaseTime()}.apk"
+        }
+    }
+
+//    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+/* 友盟多渠道打包 */
+    productFlavors {
+        yingyongbao {}
+        wandoujia {}
+        baidu {}
+        c360 {}
+        uc {}
+        xiaomi {}
+        huawei {}
+        c91shouji {}
+        meizu {}
+        productFlavors.all { flavor ->
+            flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.android.material:material:1.1.0-alpha07'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    //minio 上传依赖
+    implementation group: 'com.amazonaws', name: 'aws-android-sdk-s3', version: '2.22.5'
+    implementation group: 'com.amazonaws', name: 'aws-android-sdk-mobile-client', version: '2.22.5'
+}
+
+def releaseTime() {
+    return new Date().format("MM-dd@HH_mm")
+}

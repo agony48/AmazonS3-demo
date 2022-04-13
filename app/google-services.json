@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "替换为您的 FCM 相关配置",
+    "firebase_url": "替换为您的 FCM 相关配置",
+    "project_id": "替换为您的 FCM 相关配置",
+    "storage_bucket": "替换为您的 FCM 相关配置"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "替换为您的 FCM 相关配置",
+        "android_client_info": {
+          "package_name": "com.lastnamechain.adapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "替换为您的 FCM 相关配置",
+          "client_type": 3
+        },
+        {
+          "client_id": "替换为您的 FCM 相关配置",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "替换为您的 FCM 相关配置"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
